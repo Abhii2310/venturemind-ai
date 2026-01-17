@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>VentureMind.AI – AI Startup Co-Founder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css?v=pro" />
+</head>
+
+<body>
+  <!-- Background -->
+  <div class="bg-gradient"></div>
+  <div class="bg-orbit bg-orbit-1"></div>
+  <div class="bg-orbit bg-orbit-2"></div>
+
+  <!-- LANDING VIEW -->
+  <section id="landing-view" class="landing-view">
+    <div class="landing-content">
+      <h1>VentureMind.AI</h1>
+      <p class="tagline">From Idea to Empire in Seconds.</p>
+      <p class="desc">The world's first fully autonomous AI startup co-founder. Generate business plans, financial
+        models, branding, and pitch decks instantly.</p>
+      <button id="start-btn" class="cta-btn">Start Building 🚀</button>
+    </div>
+  </section>
+
+  <!-- AUTH VIEW (Previously Overlay) -->
+  <section id="auth-view" class="auth-view hidden">
+    <div class="auth-box glass">
+      <div class="auth-header">
+        <h2 id="auth-title">Welcome to VentureMind</h2>
+        <p id="auth-subtitle">Login to access your workspace</p>
+      </div>
+
+      <form id="auth-form" class="auth-form">
+        <!-- Signup Fields -->
+        <div id="signup-fields" class="hidden">
+          <div class="input-row">
+            <input type="text" id="auth-first-name" placeholder="First Name" />
+            <input type="text" id="auth-last-name" placeholder="Last Name" />
+          </div>
+
+          <input type="text" id="auth-dob" placeholder="Date of Birth" onfocus="(this.type='date')" />
+          <input type="tel" id="auth-phone" placeholder="Phone Number" />
+        </div>
+
+        <input type="email" id="auth-email" placeholder="Email Address" required />
+
+        <div class="password-group">
+          <input type="password" id="auth-password" placeholder="Password" required />
+          <span class="toggle-password" onclick="togglePassword('auth-password', this)">Show</span>
+        </div>
+
+        <div id="confirm-password-field" class="password-group hidden">
+          <input type="password" id="auth-confirm-password" placeholder="Confirm Password" />
+          <span class="toggle-password" onclick="togglePassword('auth-confirm-password', this)">Show</span>
+        </div>
+
+        <div id="privacy-policy-div" class="checkbox-group hidden">
+          <input type="checkbox" id="auth-privacy" required>
+          <label for="auth-privacy">I Agree with <span class="highlight-text">privacy and policy</span></label>
+        </div>
+
+        <button type="submit" id="auth-submit-btn">Login</button>
+      </form>
+
+      <div class="auth-toggle">
+        <span id="auth-toggle-text">New here? <a href="#" id="auth-switch-btn">Sign Up</a></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP GRID LAYOUT -->
+  <!-- APP VIEW (Main Application) -->
+  <div id="app-view" class="hidden">
+
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-left">
+        <div class="logo-mark">⚡</div>
+        <div class="logo-text">
+          <span class="logo-main">VentureMind<span class="accent">.AI</span></span>
+          <span class="logo-sub">Your AI Startup Co-Founder</span>
+        </div>
+      </div>
+      <div class="nav-right">
+        <button id="history-toggle" class="nav-btn hidden">📜 History</button>
+        <button id="voice-toggle" class="voice-toggle-btn">🔊 Voice: On</button>
+        <div id="user-display" class="user-pill hidden"></div>
+        <button id="logout-btn" class="nav-btn hidden">Logout</button>
+      </div>
+    </header>
+
+    <!-- HISTORY SIDEBAR -->
+    <div id="history-sidebar" class="history-sidebar glass hidden">
+      <div class="history-header">
+        <h3>Your Startups</h3>
+        <button id="history-close-btn">×</button>
+      </div>
+      <ul id="history-list" class="history-list">
+        <!-- Items will be injected here -->
+      </ul>
+    </div>
+
+    <!-- MAIN -->
+    <main class="layout">
+
+      <!-- CHAT -->
+      <section class="chat-shell glass">
+        <div class="chat-header">
+          <h1>
+            One idea. One chat.<br />
+            <span class="highlight">One complete startup.</span>
+          </h1>
+          <p class="subtitle">
+            Describe your startup idea in one line. VentureMind generates
+            <span class="strong">strategy, branding, financials & pitch</span>.
+          </p>
+        </div>
+
+        <div id="chat-messages" class="chat-messages">
+          <div class="msg msg-ai glass-bubble">
+            <div class="msg-label">VentureMind.AI</div>
+            <p>
+              Tell me your startup idea and I’ll act as your AI co-founder —
+              from concept to pitch.
+            </p>
+          </div>
+        </div>
+
+        <!-- STICKY INPUT -->
+        <form id="chat-form" class="chat-input-row">
+          <div class="input-shell glass-input">
+            <textarea id="chat-input" rows="1" placeholder="Describe your startup idea…"></textarea>
+          </div>
+
+          <button type="button" id="mic-btn" class="mic-btn" title="Speak">
+            🎙️
+          </button>
+
+          <button type="submit" class="send-btn">
+            ➤
+          </button>
+        </form>
+
+        <div id="typing-indicator" class="typing hidden">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="typing-text">Thinking…</span>
+        </div>
+      </section>
+
+      <!-- SIDE PACK -->
+      <aside class="side-pack glass">
+        <div class="side-header">
+          <h2>Startup Pack</h2>
+          <p class="side-subtitle">Generated live from your idea</p>
+        </div>
+
+        <div class="side-scroll">
+          <section id="pack-summary" class="pack-section">
+            <h3>Summary</h3>
+            <p class="placeholder">Generated summary will appear here</p>
+          </section>
+
+          <!-- Market Analysis Removed -->
+
+          <section id="pack-brand" class="pack-section">
+            <h3>Brand</h3>
+            <div class="brand-block">
+              <p class="placeholder">Brand details will appear here</p>
+            </div>
+
+            <div class="logo-shell">
+              <div class="logo-label">AI Logo</div>
+              <div class="logo-frame">
+                <div id="logo-placeholder">Logo preview</div>
+                <img id="brand-logo" class="logo-img hidden" />
+              </div>
+              <button id="logo-download-btn" class="logo-download-btn hidden">
+                ⬇ Download Logo
+              </button>
+            </div>
+
+            <div class="color-row" id="brand-colors"></div>
+          </section>
+
+          <section id="pack-financials" class="pack-section">
+            <h3>Financials</h3>
+            <ul id="fin-list" class="kv-list"></ul>
+          </section>
+
+          <section id="pack-pitch" class="pack-section">
+            <h3>Pitch</h3>
+            <p id="elevator-text" class="placeholder"></p>
+            <ul id="pitch-slides" class="kv-list"></ul>
+          </section>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <footer class="footer">
+    Built with ❤️ using FastAPI, LangChain, OpenAI & Stability AI
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="main.js?v=pro"></script>
+</body>
+
+</html>
